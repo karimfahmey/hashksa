@@ -1,0 +1,124 @@
+@use "../../assets/helpers/theme-variables" as v;
+@import "../../assets/helpers/mixins";
+
+.hksa-page-profile {
+  .hksa-profile-title {
+    display: flex;
+    flex-wrap: wrap;
+    margin-block-start: 15px;
+    margin-block-end: 50px;
+    h2 {
+      margin-block-end: 15px;
+    }
+    p {
+      font-size: v.$font-size-h3;
+      color: v.$text;
+    }
+  }
+
+  .hksa-profile-edit {
+    margin-block: 60px 120px;
+    form {
+      .input-group {
+        position: relative;
+        .form-label {
+          position: absolute;
+          z-index: 1;
+          right: 20px;
+          top: -15px;
+          background: #f5f7f9;
+          padding: 5px;
+          color: v.$theme-black;
+          font-size: v.$font-size-18;
+          font-weight: 500;
+          z-index: 11;
+        }
+        .form-control {
+          background-color: transparent;
+          border: 1px solid #e1e3e3;
+          border-radius: 12px !important;
+          padding: 20px 30px;
+          &:hover,
+          &:focus {
+            box-shadow: none;
+          }
+        }
+        .btn {
+          @include vertical-position();
+          left: 15px;
+          background-color: transparent;
+          border: 1px solid #e1e3e3 !important;
+          border-radius: 12px !important;
+          color: v.$text;
+          padding: 10px 30px;
+          &:hover {
+            background-color: v.$primary;
+            color: v.$white;
+            border: 1px solid v.$primary !important;
+          }
+        }
+        i {
+          @include vertical-position();
+          left: 30px;
+          font-size: v.$font-size-18;
+          &.icon-lock {
+            font-size: v.$font-size-h4;
+          }
+        }
+      }
+      .error {
+        margin-block-start: -10px;
+        margin-block-end: 30px;
+      }
+      .hksa-edit-photo {
+        display: flex;
+        align-items: center;
+        margin-block-end: 50px;
+        img {
+          display: block;
+          width: 164px;
+          height: 162px;
+          border-radius: 50px;
+          object-fit: cover;
+          margin-inline-end: 20px;
+        }
+        .hksa-action {
+          h5 {
+            margin-block-end: 15px;
+          }
+          .label {
+            display: flex;
+            width: 100%;
+            cursor: pointer;
+            input {
+              display: none;
+            }
+            .hksa-upload-photo {
+              display: flex;
+              align-items: center;
+              border: 1px dashed #e6e8ec;
+              border-radius: 24px;
+              padding: 10px 30px;
+              margin-block-start: 15px;
+              i {
+                margin-inline-start: 10px;
+              }
+            }
+          }
+        }
+      }
+      .add-submit {
+        display: flex;
+        justify-content: center;
+        background: v.$primary;
+        border-radius: 24px;
+        width: auto;
+        padding: 15px 20px 20px;
+        border: 0;
+        margin-block-start: 30px;
+        font-size: v.$font-size-h4;
+        color: v.$white;
+      }
+    }
+  }
+}

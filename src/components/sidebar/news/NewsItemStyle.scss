@@ -1,0 +1,107 @@
+@use '../../../assets/helpers/theme-variables' as v;
+
+.hksa-news-wrapper {
+    ul {
+        background-color: v.$white;
+        padding: 15px;
+        border-radius: 18px;
+        margin-block-end: 28px;
+        .hksa-news-item {
+            .hksa-news-item--media {
+                position: relative;
+                img {
+                    max-width: 100%;
+                    border-radius: 14px;
+                    max-height: 209px;
+                    width: 100%;
+                    object-fit: cover;
+                }
+                .hksa-news-item--date {
+                    display: flex;
+                    flex-wrap: wrap;
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    padding: 10px 15px;
+                    background: rgb(1 0 0 / 38%);
+                    border-radius: 19px;
+                    opacity: 1;
+                    backdrop-filter: blur(7px);
+                    -webkit-backdrop-filter: blur(7px);
+                    justify-content: center;
+                    text-align: center;
+                    span {
+                        display: block;
+                        width: 100%;
+                        color: v.$white;
+                        font-size: v.$font-size-16;
+                        font-weight: 500;
+                        margin-block-end: 0;
+                    }
+                }
+            }
+            .hksa-news-item--content {
+                display: flex;
+                flex-wrap: wrap;
+                padding: 30px;
+                .hksa-news-title {
+                    font-size: v.$font-size-16;
+                    font-weight: 500;
+                    line-height: 1.5;
+                }
+                .hksa-news-meta {
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-block-start: 20px;
+                    .hksa-news-meta-item {
+                        display: flex;
+                        align-items: center;
+                        color: v.$text;
+                        margin: 0;
+                        line-height: 3;
+                        width: 100%;
+                        img {
+                            width: 22px;
+                            margin-inline-end: 10px;
+                        }
+                        i {
+                            font-size: 18px;
+                            margin-inline-end: 10px;
+                            &.icon-views {
+                                font-size: 14px;
+                            }
+                            &::before {
+                                color: #787e91;
+                            }
+                        }
+                        &.like {
+                            i {
+                                font-size: 20px;
+                            }
+                        }
+                    }
+
+                    .hksa-news-btn {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 10px 15px;
+                        border: 1px solid #FFFFFF;
+                        border-radius: 16px;
+                        width: 58px;
+                        height: 58px;
+                        font-size: v.$font-size-16;
+                        color: v.$text;
+                        i {
+                            color: v.$primary;
+                            font-size: v.$font-size-h3;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

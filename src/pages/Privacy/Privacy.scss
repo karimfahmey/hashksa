@@ -1,0 +1,33 @@
+@use "../../assets/helpers/theme-variables" as v;
+@import "../../assets/helpers/mixins";
+
+.hkas-privacy-content {
+    padding-block: 30px;
+    .hkas-privacy-description {
+        h1, h2, h3, h4, h5, h6 {
+            display: block;
+            margin-block-end: 20px;
+            line-height: 1.5;
+        }
+        h2 {
+            font-size: v.$font-size-h3;
+        }
+        p {
+            color: #777E90;
+            font-size: v.$font-size-20;
+            margin-block-end: 30px;
+        }
+        ul {
+            padding-inline-start: 20px;
+            margin-block-end: 30px !important;
+            display: block;
+            li {
+                color: #777E90;
+                font-size: v.$font-size-16;
+                margin-block-end: 15px;
+                line-height: 1.5;
+                list-style: square;
+            }
+        }
+    }
+}

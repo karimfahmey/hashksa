@@ -1,0 +1,11 @@
+@import "./helpers/bootstrap-cust";
+@import "~bootstrap/scss/bootstrap";
+@import '@splidejs/react-splide/css';
+@import '@splidejs/react-splide/css/core';
+@import 'react-toastify/dist/ReactToastify.css';
+@import '@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '@fortawesome/fontawesome-free/scss/solid.scss';
+@import "./helpers/theme-variables";
+@import "./helpers/mixins";
+@import "./helpers/reset";
+@import "../components/header/HeaderStyle.scss";

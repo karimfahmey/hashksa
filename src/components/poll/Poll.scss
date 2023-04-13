@@ -1,0 +1,213 @@
+@use "../../assets/helpers/theme-variables" as v;
+
+.hksa-poll-wrapper {
+  .hksa-poll-title {
+    font-size: v.$font-size-h1;
+    margin-block-end: 15px;
+  }
+  ul {
+    .hksa-poll-item {
+      display: flex;
+      background-color: v.$blue-light;
+      padding: 15px;
+      border-radius: 18px;
+      margin-block-end: 28px;
+      @media (max-width: 575px) {
+        flex-wrap: wrap;
+      }
+      .hksa-poll-item--media {
+        position: relative;
+        img {
+          width: 350px;
+          max-width: 350px;
+          min-height: 350px;
+          height: auto;
+          object-fit: cover;
+          border-radius: 20px;
+          @media (max-width: 575px) {
+            max-width: 100%;
+          }
+        }
+        .slide-img {
+          height: 350px;
+        }
+        video {
+          width: 350px;
+          max-width: 350px;
+          min-height: 350px;
+          height: auto;
+          object-fit: cover;
+          border-radius: 20px;
+        }
+        .hksa-news-item--cat {
+          position: absolute;
+          top: 30px;
+          right: 30px;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          padding: 15px 30px;
+          background: rgba(1, 0, 0, 0.38);
+          border-radius: 28px;
+          opacity: 1;
+          backdrop-filter: blur(7px);
+          -webkit-backdrop-filter: blur(7px);
+          opacity: 1;
+          backdrop-filter: blur(7px);
+          -webkit-backdrop-filter: blur(7px);
+          justify-content: center;
+          text-align: center;
+          img {
+            max-width: 20px;
+            min-height: auto;
+            margin-inline-end: 15px;
+          }
+          span {
+            color: v.$white;
+            font-size: v.$font-size-20;
+          }
+        }
+        .hksa-poll-item--date {
+          display: flex;
+          flex-wrap: wrap;
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          background-color: v.$primary;
+          border-radius: 16px;
+          padding: 20px 0;
+          justify-content: center;
+          text-align: center;
+          span {
+            display: block;
+            width: 100%;
+            color: v.$white;
+            font-size: v.$font-size-h1;
+            font-weight: 700;
+            &:first-child {
+              font-size: v.$font-size-16;
+              margin-block-end: 10px;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+      .hksa-poll-item--content {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 30px;
+        width: 100%;
+        .hksa-poll-title {
+          font-size: v.$font-size-h3;
+          @media only screen and (min-width: 959px) and (max-width: 1300px) {
+            font-size: 20px;
+          }
+        }
+        .hksa-poll-description {
+          font-size: v.$font-size-20;
+          color: v.$text;
+          font-weight: 400;
+          margin-block-end: 30px;
+          @media only screen and (min-width: 959px) and (max-width: 1300px) {
+            font-size: 16px;
+          }
+        }
+        .hksa-poll-progress {
+          position: relative;
+          display: inline-block;
+          width: 100%;
+          z-index: 1;
+        }
+        .hksa-poll-meta {
+          display: flex;
+          width: 100%;
+          justify-content: flex-end;
+          align-items: center;
+          position: absolute;
+          left: 30px;
+          bottom: 30px;
+          @media (max-width: 575px) {
+            flex-direction: column;
+          }
+          .hksa-poll-location {
+            padding: 16px 15px;
+            border: 1px solid #ffffff;
+            border-radius: 16px;
+            margin-inline-end: 15px;
+            margin-block: 0;
+            flex: 3;
+            font-size: v.$font-size-16;
+            color: v.$text;
+            i {
+              color: v.$text;
+              font-size: v.$font-size-20;
+              margin-inline-end: 10px;
+              font-weight: 500;
+            }
+          }
+          .hksa-poll-time {
+            padding: 16px 15px;
+            border: 1px solid #ffffff;
+            border-radius: 16px;
+            margin-inline-end: 15px;
+            margin-block: 0;
+            flex: 1;
+            font-size: v.$font-size-16;
+            color: v.$text;
+            i {
+              color: v.$text;
+              font-size: v.$font-size-20;
+              margin-inline-end: 10px;
+              font-weight: 500;
+            }
+          }
+          .hksa-poll-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            border: 1px solid #ffffff;
+            border-radius: 16px;
+            width: 58px;
+            height: 58px;
+            font-size: v.$font-size-16;
+            color: v.$text;
+            i {
+              color: v.$primary;
+              font-size: v.$font-size-h3;
+              font-weight: 500;
+            }
+          }
+          p {
+            @media (max-width: 575px) {
+              margin-block: 15px;
+            }
+          }
+        }
+        .hksa-social-share {
+          @media (max-width: 575px) {
+            position: relative;
+            left: 0;
+            bottom: 0;
+          }
+          @media only screen and (min-width: 959px) and (max-width: 1300px) {
+            left: 0;
+            bottom: 0;
+          }
+          .hksa-social-share-item {
+            @media only screen and (min-width: 959px) and (max-width: 1300px) {
+                width: 48px;
+                height: 48px;
+            }
+            i {
+                @media only screen and (min-width: 959px) and (max-width: 1300px) {
+                    font-size: 18px;
+                }
+            }
+          }
+        }
+      }
+    }
+  }
+}

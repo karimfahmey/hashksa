@@ -1,0 +1,57 @@
+@use '../../assets/helpers/theme-variables' as v;
+
+.sidebar {
+    @media (max-width: 574px) {
+        margin-block-start: 30px;
+    }
+    @media only screen and (min-width: 575px) and (max-width: 960px) {
+        margin-block-start: 30px;
+    }
+    .sidebar-content {
+        .sidebar-block {
+            margin-block-end: 30px;
+            .sidebar-title {
+                h4 {
+                    display: flex;
+                    width: auto;
+                    font-size: v.$font-size-h4;
+                    margin-block-end: 29px;
+                    font-weight: 600;
+                    &:after {
+                        content: "";
+                        position: relative;
+                        top: 7px;
+                        display: block;
+                        background-color: #D9EDE6;
+                        width: 56px;
+                        height: 20px;
+                        margin-inline-start: -50px;
+                        z-index: -1;
+                    }
+                }
+            }
+            .download-title {
+                margin-block-start: 52px;
+                margin-block-end: 30px;
+                h4 {
+                    font-size: v.$font-size-h4;
+                    font-weight: 600;
+                }
+                p {
+                    font-size: v.$font-size-20;
+                    color: v.$text;
+                    padding-inline-end: 20%;
+                }
+            }
+        }
+        .download-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-block-start: 30px;
+            a {
+                padding-inline-end: 15px;
+            }
+        }
+    }
+}

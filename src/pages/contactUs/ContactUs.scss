@@ -1,0 +1,159 @@
+@use "../../assets/helpers/theme-variables" as v;
+@import "../../assets/helpers/mixins";
+
+.hksa-page-contact-us {
+  position: relative;
+  .hkas-contactus-details {
+    position: relative;
+    padding-block: 50px;
+    .hkas-contactus-form {
+      border: 1px solid #e2e3e3;
+      border-radius: 24px;
+      padding: 38px;
+      .hkas-contactus-form-title {
+        position: relative;
+        display: block;
+        width: 100%;
+        margin-block-end: 40px;
+      }
+      form {
+        .input-group {
+          position: relative;
+          .form-label {
+            position: absolute;
+            z-index: 1;
+            right: 20px;
+            top: -15px;
+            background: #f5f7f9;
+            padding: 5px;
+            color: v.$theme-black;
+            font-size: v.$font-size-18;
+            font-weight: 500;
+            z-index: 11;
+          }
+          .form-control {
+            background-color: transparent;
+            border: 1px solid #e1e3e3;
+            border-radius: 12px !important;
+            padding: 20px 30px;
+            @media (max-width: 575px) {
+              padding-inline-end: 70px;
+            }
+            @media only screen and (min-width: 575px) and (max-width: 960px) {
+              padding-inline-end: 70px;
+            }
+            &:hover,
+            &:focus {
+              box-shadow: none;
+            }
+          }
+          i {
+            @include vertical-position();
+            left: 30px;
+            font-size: v.$font-size-18;
+            &.icon-lock {
+              font-size: v.$font-size-h4;
+            }
+          }
+        }
+        .error {
+          margin-block-start: -10px;
+          margin-block-end: 30px;
+        }
+        .login-submit {
+          display: flex;
+          justify-content: center;
+          background: v.$primary;
+          border-radius: 24px;
+          width: 100%;
+          padding: 15px 20px 20px;
+          border: 0;
+          margin-block-start: 30px;
+          font-size: v.$font-size-h4;
+          color: v.$white;
+        }
+      }
+    }
+    .hkas-contactus-img {
+        display: flex;
+        margin: auto;
+        @media (max-width: 575px) {
+          margin-block-start: 15px;
+        }
+        @media only screen and (min-width: 575px) and (max-width: 960px) {
+          margin-block-start: 15px;
+        }
+    }
+    .hksa-contactus-text {
+        display: flex;
+        align-items: self-start;
+        gap: 50px;
+        margin-block: 30px;
+        @media (max-width: 575px) {
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
+        }
+        @media only screen and (min-width: 575px) and (max-width: 960px) {
+          justify-content: center;
+        }
+        h5 {
+            margin-block-start: 10px;
+        }
+        ul {
+            li {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                i {
+                    font-size: v.$font-size-14;
+                    &.icon-phone {
+                        font-size: v.$font-size-h4;
+                    }
+                }
+                p {
+                    color: v.$text;
+                    font-size: v.$font-size-20;
+                    line-height: 21px;
+                }
+            }
+        }
+    }
+    .hksa-contactus-social {
+      .social-links {
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 72px;
+          height: 72px;
+          border-radius: 14px;
+          img {
+            width: 45px;
+          }
+        }
+      }
+    }
+    .col-md-4 {
+      @media only screen and (min-width: 575px) and (max-width: 960px) {
+        width: 100%;
+        margin-left: 0;
+      }
+      @media only screen and (min-width: 959px) and (max-width: 1300px) {
+        width: 50%;
+        margin-left: 0;
+      }
+    }
+    .offset-4 {
+      @media only screen and (min-width: 575px) and (max-width: 960px) {
+        width: 100%;
+        margin-left: 0;
+      }
+      @media only screen and (min-width: 959px) and (max-width: 1300px) {
+        width: 50%;
+        margin-left: 0;
+      }
+    }
+  }
+}

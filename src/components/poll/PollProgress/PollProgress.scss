@@ -1,0 +1,68 @@
+@use '../../../assets/helpers/theme-variables' as v;
+
+.poll-progress-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    .poll-progress {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: #F4F7F9;
+        margin-block-end: 15px;
+        padding: 15px 20px;
+        border-radius: 50px;
+        max-width: 60%;
+        width: 100%;
+        justify-content: space-between;
+        overflow: hidden;
+        cursor: pointer;
+        @media (max-width: 575px) {
+            max-width: 73%;
+        }
+        @media only screen and (min-width: 959px) and (max-width: 1300px) {
+            max-width: 75%;
+        }
+        .progress {
+            position: absolute;
+            right: 0;
+            width: 100%;
+            background: transparent;
+            height: 100%;
+            .progress-bar {
+                background-color: #EAF6F0;
+            }
+        }
+        .poll-progress-text {
+            display: flex;
+            align-items: center;
+            i {
+                font-size: 15px;
+                border: 2px Solid v.$blue-light;
+                border-radius: 30px;
+                margin-inline-end: 10px;
+                z-index: 1;
+                &::before {
+                    color: #777e90;
+                }
+            }
+            h6 {
+                line-height: 0.8;
+            }
+        }
+        &.active {
+            cursor: auto;
+            i {
+                &::before {
+                    color: #059e4b;
+                }
+            }
+        }
+    }
+    .choose-count {
+        margin-inline-start: 10px;
+        margin-block-start: -15px;
+        font-size: 16px;
+        color: #777E90;
+    }
+}

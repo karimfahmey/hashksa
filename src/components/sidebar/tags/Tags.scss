@@ -1,0 +1,30 @@
+@use '../../../assets/helpers/theme-variables' as v;
+@import '../../../assets/helpers/mixins';
+
+.hksa-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    li {
+        display: flex;
+        border: 1px solid #E7E7E7;
+        padding: 0px 25px;
+        border-radius: 20px;
+        margin-inline-end: 10px;
+        margin-block-end: 10px;
+        cursor: pointer;
+        @include transition-ease-out-4();
+        p {
+            font-size: v.$font-size-20;
+            color: v.$text;
+        }
+        &:hover {
+            background-color: v.$blue-light;
+            border-color: v.$blue-light;
+            @include transition-ease-out-4();
+            p {
+                color: v.$primary;
+                @include transition-ease-out-4();
+            }
+        }
+    }
+}

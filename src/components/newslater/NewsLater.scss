@@ -1,0 +1,75 @@
+@use "../../assets/helpers/theme-variables" as v;
+
+.news-later {
+  background-color: v.$blue-light;
+  padding: 50px 45px;
+  margin-block-start: 50px;
+  margin-block-end: 90px;
+  border-radius: 22px;
+  @media (max-width: 574px) {
+    padding: 30px 20px;
+  }
+  @media only screen and (min-width: 575px) and (max-width: 960px) {
+    padding: 30px 20px;
+  }
+  .col-md-8 {
+    @media (max-width: 574px) {
+      width: 100%;
+    }
+    @media only screen and (min-width: 575px) and (max-width: 960px) {
+      width: 100%;
+    }
+  }
+  .col-md-4 {
+    @media (max-width: 574px) {
+      width: 100%;
+    }
+    @media only screen and (min-width: 575px) and (max-width: 960px) {
+      width: 100%;
+    }
+  }
+  .hksa-hero-body {
+    @media (max-width: 575px) {
+      margin-block-end: 24px;
+    }
+    h1 {
+      font-size: v.$font-size-h4;
+      margin-block-end: 20px;
+    }
+    p {
+      font-size: v.$font-size-h4;
+      color: v.$text;
+      padding-inline-end: 100px;
+      @media (max-width: 575px) {
+        font-size: 18px;
+        padding-inline-end: 0px;
+      }
+    }
+  }
+  .hksa-news-later-form {
+    form {
+      background: v.$white;
+      border-radius: 14px;
+      overflow: hidden;
+      .input-group {
+        align-items: center;
+        input {
+          padding: 15px 20px;
+          background: transparent;
+          border: 0;
+          &:focus {
+            box-shadow: none;
+          }
+        }
+      }
+      button {
+        padding: 15px 40px;
+        background: v.$primary;
+        border: 0;
+        color: v.$white;
+        border-radius: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+}

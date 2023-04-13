@@ -1,0 +1,55 @@
+@use "../../assets/helpers/theme-variables" as v;
+@import "../../assets/helpers/mixins";
+
+
+.hksa-notdound-page {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    height: calc(100vh - 315px);
+    text-align: center;
+    .hksa-notdound-header {
+        position: relative;
+        width: 100%;
+        margin-block-end: 30px;
+        h2 {
+            font-size: v.$font-size-h2;
+            color: v.$theme-black;
+        }
+        p {
+            margin-block-start: 15px;
+            font-size: v.$font-size-18;
+        }
+    }
+    .hksa-notdound-footer {
+        form {
+            .input-group {
+                background-color: #FFF;
+                border-radius: 49px;
+                padding: 15px;
+                input {
+                    border: 0;
+                    &:focus {
+                        border: 0;
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+        .btn {
+            padding: 15px 30px;
+            background: v.$primary;
+            border-radius: 18px;
+            margin-inline: 15px;
+            color: v.$white;
+            margin-block-start: 30px;
+            &:hover {
+                background: v.$white;
+                color: v.$primary;
+            }
+        }
+    }
+}

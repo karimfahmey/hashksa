@@ -1,0 +1,35 @@
+.hksa-search-result {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  p {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+}
+
+.hksa-search-nav {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -26px;
+    display: inline-block;
+    width: 100%;
+    height: 6px;
+    background: #253031 0% 0% no-repeat padding-box;
+    box-shadow: 0px 6px 20px #b1b9b545;
+    border-radius: 39px;
+    opacity: 0.1;
+    margin-block-start: 20px;
+  }
+}

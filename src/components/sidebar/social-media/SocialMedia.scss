@@ -1,0 +1,38 @@
+@use '../../../assets/helpers/theme-variables' as v;
+
+.social-media {
+    margin-block-end: 50px;
+    .social-title {
+        font-size: v.$font-size-h3;
+        margin-block-start: 52px;
+        margin-block-end: 30px;
+        font-weight: 600;
+    }
+    .social-media-icons {
+        display: flex;
+        align-items: center;
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 72px;
+            height: 72px;
+            border-radius: 14px;
+            background-color: v.$blue-light;
+            background-color: #EBF1F4;
+            margin-inline-end: 20px;
+            &.facebook {
+                background-color: rgb(61 106 213 / 0.05);
+            }
+            &.instagram {
+                background-color: rgb(213 62 143 / 0.05);
+            }
+            &.snapchat {
+                background-color: rgb(254 234 59 / 0.05);
+            }
+            &.twitter {
+                background-color: rgb(4 169 243 / 0.05);
+            }
+        }
+    }
+}

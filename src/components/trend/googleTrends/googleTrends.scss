@@ -1,0 +1,72 @@
+@use '../../../assets/helpers/theme-variables' as v;
+@import '../../../assets/helpers/mixins';
+
+.hksa-twitter-trends-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    background-color: #EBF1F4;
+    border-radius: 18px;
+    margin-block-start: 43px;
+    .hksa-twitter-trends-item {
+        .hksa-twitter-trends-item-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border-bottom: 1px Solid v.$white;
+            @include transition-ease-out-4();
+            .hksa-twitter-trends-item-text {
+                display: flex;
+                align-items: center;
+                .hksa-twitter-trends-item-hashtag {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-inline-end: 18px;
+                    width: 46px;
+                    height: 46px;
+                    background-color: v.$white;
+                    border-radius: 12px;
+                    color: v.$primary;
+                    font-size: v.$font-size-20;
+                    @include transition-ease-out-4();
+                }
+                h4 {
+                    display: flex;
+                    flex-wrap: wrap;
+                    font-size: v.$font-size-20;
+                    span {
+                        width: 100%;
+                        color: v.$text;
+                        font-weight: 400;
+                        margin-block-start: 10px;
+                    }
+                }
+            }
+            .hksa-twitter-trends-item-numb {
+                span {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 46px;
+                    height: 46px;
+                    border: 1px solid #E7E7E7;
+                    border-radius: 12px;
+                    font-size: v.$font-size-20;
+                }
+            }
+            &:hover {
+                border-bottom: 1px Solid v.$white !important;
+                @include transition-ease-out-4();
+                .hksa-twitter-trends-item-text {
+                    .hksa-twitter-trends-item-hashtag {
+                        background-color: v.$primary;
+                        color: v.$white;
+                        @include transition-ease-out-4();
+                    }
+                }
+            }
+        }
+    }
+}

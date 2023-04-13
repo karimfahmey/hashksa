@@ -1,0 +1,287 @@
+@use "../../assets/helpers/theme-variables" as v;
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: v.$blue-light;
+  padding: 30px 40px;
+  border-radius: 24px;
+@media (max-width: 575px) {
+    flex-flow: column;
+    align-items: flex-start;
+  }
+  ul {
+    display: flex;
+    align-items: center;
+  @media (max-width: 575px) {
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-block-end: 15px !important;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      margin-inline-end: 15px;
+      a {
+        font-size: v.$font-size-20;
+        color: v.$text;
+        font-weight: 500;
+      }
+      i {
+        font-size: v.$font-size-14;
+        margin-inline-end: 15px;
+        color: v.$text;
+        font-weight: 500;
+      }
+      span {
+        font-size: v.$font-size-20;
+        color: v.$text;
+        font-weight: 500;
+        &.active {
+          color: v.$primary;
+        }
+      }
+    }
+  }
+  .back-home {
+    display: flex;
+    align-items: center;
+    font-size: v.$font-size-20;
+    color: v.$primary;
+  @media (max-width: 575px) {
+      margin-block-start: 15px;
+    }
+    i {
+      margin-inline-start: 15px;
+      font-size: v.$font-size-14;
+    }
+  }
+}
+.single-post {
+  padding-block: 100px;
+  .single-event-data {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    background-color: v.$blue-light;
+    padding: 15px;
+    border-radius: 18px;
+    margin-block-end: 28px;
+  @media (max-width: 575px) {
+      flex-direction: column;
+    }
+    #map {
+      border-radius: 18px;
+    @media (max-width: 575px) {
+        width: 100% !important;
+      }
+    }
+    .single-event-date--content {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-between;
+      align-self: normal;
+      .single-event-title-block {
+        display: flex;
+        align-items: center;
+        margin-block-end: 15px;
+        .hksa-events-item--date {
+          display: flex;
+          flex-wrap: wrap;
+          width: 110px;
+          height: 126px;
+          background-color: v.$primary;
+          border-radius: 16px;
+          padding: 20px 0;
+          justify-content: center;
+          text-align: center;
+          margin-inline-end: 15px;
+          span {
+            display: block;
+            width: 100%;
+            color: v.$white;
+            font-size: v.$font-size-h1;
+            font-weight: 700;
+            &:first-child {
+              font-size: v.$font-size-16;
+              margin-block-end: 10px;
+              font-weight: 500;
+            }
+          }
+        }
+        .hksa-events-title {
+          max-width: 75%;
+          line-height: 1.5;
+        }
+      }
+      .single-event-description {
+        line-height: 1.5;
+        font-size: v.$font-size-20;
+        p {
+            line-height: 1.5;
+            font-size: v.$font-size-20;
+        }
+      }
+      .hksa-events-meta {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        margin-block-start: 15px;
+      @media (max-width: 575px) {
+          flex-direction: column;
+        }
+        .hksa-events-location {
+          padding: 16px 15px;
+          background-color: v.$white;
+          border-radius: 16px;
+          margin-inline-end: 15px;
+          margin-block: 0;
+          flex: 3;
+          font-size: v.$font-size-16;
+          color: v.$text;
+        @media (max-width: 575px) {
+            margin-block-end: 15px;
+          }
+          i {
+            color: v.$text;
+            font-size: v.$font-size-20;
+            margin-inline-end: 10px;
+            font-weight: 500;
+          }
+        }
+        .hksa-events-time {
+          padding: 16px 15px;
+          background-color: v.$white;
+          border-radius: 16px;
+          margin-inline-end: 15px;
+          margin-block: 0;
+          flex: 1;
+          font-size: v.$font-size-16;
+          color: v.$text;
+          i {
+            color: v.$text;
+            font-size: v.$font-size-20;
+            margin-inline-end: 10px;
+            font-weight: 500;
+          }
+        }
+        p {
+        @media (max-width: 575px) {
+            margin-block: 15px;
+          }
+        }
+      }
+    }
+    .event-image {
+      max-width: 420px;
+      width: 420px;
+      height: 420px;
+      margin-inline-start: 35px;
+      border-radius: 18px;
+      object-fit: cover;
+    @media (max-width: 575px) {
+        max-width: 100%;
+        height: 330px;
+        padding-inline-start: 0px;
+        margin-block-start: 15px;
+        margin-inline-start: 0;
+      }
+    }
+    .hksa-post-bookmark {
+      position: absolute;
+      left: 30px;
+      top: 20px;
+      z-index: 1;
+    @media (max-width: 575px) {
+        left: 0px;
+        top: 0;
+      }
+      cursor: pointer;
+      i {
+        font-size: 70px;
+        &:before {
+          color: v.$white;
+        }
+      }
+      &.active {
+        i {
+          &:before {
+            color: v.$primary;
+          }
+        }
+      }
+    }
+    .map-image {
+      max-width: 50%;
+    @media (max-width: 575px) {
+        max-width: 100%;
+      }
+    }
+    .single-event-data--info {
+      display: flex;
+      flex-wrap: wrap;
+      align-self: stretch;
+      width: 50%;
+      padding-inline-start: 20px;
+    @media (max-width: 575px) {
+        width: 100%;
+        margin-block-start: 15px;
+      }
+      .single-event-data--info-header {
+        width: 100%;
+      @media (max-width: 575px) {
+          margin-block-start: 15px;
+          margin-block-end: 15px;
+        }
+        .single-event-info--title {
+          font-size: v.$font-size-20;
+        }
+        .single-event-info--description {
+          font-size: v.$font-size-20;
+        }
+      }
+      .single-event-link-social {
+        display: flex;
+        align-items: center;
+        margin-block-start: 15px;
+      @media (max-width: 575px) {
+          flex-wrap: wrap;
+        }
+      }
+      .single-event-links {
+        width: auto;
+        .single-event-link {
+          display: flex;
+          align-items: center;
+          padding: 5px 20px;
+          border: 1px solid #e7e7e7;
+          border-radius: 25px;
+          margin-inline-end: 10px;
+          font-weight: 500;
+        @media (max-width: 575px) {
+            width: 100%;
+            margin-block-end: 15px;
+          }
+          a {
+            display: flex;
+            align-items: center;
+            img {
+              margin-inline-end: 15px;
+            }
+            p {
+              font-size: v.$font-size-20;
+            }
+          }
+          img {
+            margin-inline-end: 15px;
+          }
+          p {
+            font-size: v.$font-size-20;
+          }
+        }
+      }
+    }
+  }
+}
