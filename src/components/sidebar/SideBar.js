@@ -24,14 +24,6 @@ const SideBar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar-content">
-        {/* <div className="sidebar-block">
-          <div className="sidebar-title">
-            <h4>{t("latest-hashtags")}</h4>
-          </div>
-          <div className="sidebar-hashtags">
-            <Tags />
-          </div>
-        </div> */}
         <div className="sidebar-block">
           <div className="sidebar-title">
             <h4>{t("latest-news")}</h4>
@@ -47,10 +39,10 @@ const SideBar = () => {
             <p>تطبيق شامل يقدم لك آخر الأحداث في السعودية عبر تغطية مستمرة</p>
           </div>
           <div className="download-content">
-            <Link to={contact.social?.appStore.link}>
+            <Link target="_blank" to={contact.social?.appStore.link}>
               <img src={contact.social?.appStore.image} alt="Feacbook" />
             </Link>
-            <Link to={contact.social?.googlePlay.link}>
+            <Link target="_blank" to={contact.social?.googlePlay.link}>
               <img src={contact.social?.googlePlay.image} alt="Feacbook" />
             </Link>
           </div>

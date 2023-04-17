@@ -19,6 +19,7 @@ import SearchForm from "../hero/SearchForm";
 
 const Header = () => {
 
+  
   const [t] = useTranslation();
 
   const isAuthenticated = useSelector(
@@ -85,9 +86,16 @@ const Header = () => {
                     <li>
                       <NavLink to="/">{t("home")}</NavLink>
                     </li>
+                    {isAuthenticated ? (
                     <li>
                       <NavLink to="/bookmark">{t("favorite")}</NavLink>
                     </li>
+                    ) : (
+                    <li>
+                      <NavLink onClick={handleShow}>{t("favorite")}</NavLink>
+                    </li>
+                    )}
+                    <Login handleShow={handleShow} show={showLogin} />
                     <li>
                       <NavLink to="/contact-us">{t("contact")}</NavLink>
                     </li>
@@ -150,9 +158,16 @@ const Header = () => {
                   <li>
                     <NavLink to="/">{t("home")}</NavLink>
                   </li>
+                  {isAuthenticated ? (
                   <li>
                     <NavLink to="/bookmark">{t("favorite")}</NavLink>
                   </li>
+                  ) : (
+                  <li>
+                    <p onClick={handleShow}>{t("favorite")}</p>
+                  </li>
+                  )}
+                  <Login handleShow={handleShow} show={showLogin} />
                   <li>
                     <NavLink to="/contact-us">{t("contact")}</NavLink>
                   </li>

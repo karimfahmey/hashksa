@@ -129,6 +129,21 @@
             }
           }
         }
+        p {
+          position: relative;
+          display: inline-block;
+          font-size: v.$font-size-22;
+          color: v.$text;
+          margin-inline-end: 30px;
+          padding-block: 25px;
+          cursor: pointer;
+          @media (max-width: 575px) {
+            font-size: v.$font-size-16;
+          }
+          @media only screen and (min-width: 300px) and (max-width: 960px) {
+            font-size: v.$font-size-14;
+          }
+        }
       }
       .hksa-search-btn {
         display: flex;
@@ -317,6 +332,7 @@
         }
         .hksa-sidemenu-nav {
           max-height: 80vh;
+          min-height: 80vh;
           overflow: auto;
           padding-block-start: 30px;
           nav {
