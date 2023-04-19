@@ -144,7 +144,7 @@
             padding: 15px;
             width: 82%;
             margin: auto;
-            border: 1px solid #dadce0;
+            border: 1px solid transparent;
             @include transition-ease-out-4();
             div {
               padding: 0 !important;
@@ -211,7 +211,7 @@
             padding: 15px;
             width: 82%;
             margin: auto;
-            border: 1px solid #dadce0;
+            border: 1px solid transparent;
             @include transition-ease-out-4();
             i {
               margin-inline-start: 10px;
@@ -251,7 +251,7 @@
             padding: 15px;
             width: 82%;
             margin: auto;
-            border: 1px solid #dadce0;
+            border: 1px solid transparent;
             @include transition-ease-out-4();
             i {
               margin-inline-start: 10px;

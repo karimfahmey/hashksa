@@ -1,14 +1,17 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Footer from '../../components/footer/Footer'
-import Header from '../../components/header/Header'
-import ProfileEdit from './ProfileEdit'
+import React from "react";
+import { Link } from "react-router-dom";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import ProfileEdit from "./ProfileEdit";
 
 const Profile = () => {
-
   return (
     <div className="hksa-page-profile">
-      <Header />
+      <div className="container-fluid">
+        <div className="row">
+          <Header />
+        </div>
+      </div>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
@@ -38,13 +41,13 @@ const Profile = () => {
               <h2>تعديل الملف الشخصي</h2>
               <p>إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص</p>
             </div>
-            <ProfileEdit/>
+            <ProfileEdit />
           </div>
         </div>
       </div>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

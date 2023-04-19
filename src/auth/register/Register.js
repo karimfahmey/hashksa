@@ -10,6 +10,7 @@ import { ApiService } from "../../services/data.service";
 import { persistMyInfo } from "../../services/persistence";
 import Google from "../socialLogin/Google";
 import Facebook from "../socialLogin/Facebook";
+import Twitter from "../socialLogin/Twitter";
 
 const Register = ({handleShow, show}) => {
 
@@ -186,6 +187,8 @@ const Register = ({handleShow, show}) => {
             <div className="hksa-social-login-item">
               <Google />
               <Facebook />
+              <Twitter />
+
             </div>
           </div>
         </Modal.Body>

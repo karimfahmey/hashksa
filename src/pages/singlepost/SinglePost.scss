@@ -237,6 +237,12 @@
       margin-inline-end: 35px;
       object-fit: cover;
       border-radius: 20px;
+      @media (max-width: 574px) {
+        max-width: 100%;
+        width: 100%;
+        min-width: 100%;
+        height: 400px;
+      }
     }
     .hksa-post-bookmark {
       position: absolute;

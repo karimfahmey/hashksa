@@ -26,73 +26,103 @@ const Facebook = () => {
           .then((blob) => {
             setProfilePicture(URL.createObjectURL(blob));
           });
+          ApiService.provider({
+            name: result.user.displayName,
+            provider_name: "facebook",
+            provider_id: result.user.uid,
+            email: result.user.email,
+          })
+          .then((response) => {
+            if (response.status === false) {
+              toast.error(response.message, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "colored",
+              });
+            } else {
+              toast.success(response.message, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: false,
+                progress: undefined,
+                theme: "colored",
+              });
+              persistMyInfo(response.data);
+              setTimeout(() => {
+                window.location.reload(false);
+              }, 500);
+            }
+          })
+          .catch((err) => {
+            toast(err);
+            console.log(err);
+          });
+    
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const handleLogout = () => {
-    setUser(null);
-  };
+  // const handleLogout = () => {
+  //   setUser(null);
+  // };
 
-  const responseFacebook = (response) => {
-    ApiService.provider({
-      name: response.name,
-      provider_name: "facebook",
-      provider_id: response.id,
-      email: response.email,
-    })
-      .then((response) => {
-        if (response.status === false) {
-          toast.error(response.message, {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: false,
-            progress: undefined,
-            theme: "colored",
-          });
-        } else {
-          toast.success(response.message, {
-            position: "top-center",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: false,
-            progress: undefined,
-            theme: "colored",
-          });
-          persistMyInfo(response.data);
-          setTimeout(() => {
-            window.location.reload(false);
-          }, 500);
-        }
-      })
-      .catch((err) => {
-        toast(err);
-        console.log(err);
-      });
-  };
+  // const responseFacebook = (response) => {
+  //   ApiService.provider({
+  //     name: response.name,
+  //     provider_name: "facebook",
+  //     provider_id: response.id,
+  //     email: response.email,
+  //   })
+  //     .then((response) => {
+  //       if (response.status === false) {
+  //         toast.error(response.message, {
+  //           position: "top-center",
+  //           autoClose: 3000,
+  //           hideProgressBar: false,
+  //           closeOnClick: true,
+  //           pauseOnHover: true,
+  //           draggable: false,
+  //           progress: undefined,
+  //           theme: "colored",
+  //         });
+  //       } else {
+  //         toast.success(response.message, {
+  //           position: "top-center",
+  //           autoClose: 3000,
+  //           hideProgressBar: false,
+  //           closeOnClick: true,
+  //           pauseOnHover: true,
+  //           draggable: false,
+  //           progress: undefined,
+  //           theme: "colored",
+  //         });
+  //         persistMyInfo(response.data);
+  //         setTimeout(() => {
+  //           window.location.reload(false);
+  //         }, 500);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       toast(err);
+  //       console.log(err);
+  //     });
+  // };
+
+  // console.log(user, 'user');
 
   return (
     <Fragment>
-      {user ? (
-        <>
-          <button className="btn btn-secondary btn-md" onClick={handleLogout}>
-            LOGOUT
-          </button>
-          <h3>Welcome {user.displayName}</h3>
-          <p>{user.email}</p>
-          <div className="photo">
-            <img src={profilePicture} alt="dp" referrerPolicy="no-referrer" />
-          </div>
-        </>
-      ) : (
-        <span>
+      <span>
           <button
             className="btn btn-primary btn-md my-facebook-button-class"
             onClick={handleFacebookLogin}
@@ -101,7 +131,6 @@ const Facebook = () => {
             التسجيل عبر Facebook
           </button>
         </span>
-      )}
     </Fragment>
   );
 };

@@ -1,15 +1,64 @@
-import React from 'react';
-import { GoogleLogin } from 'react-google-login';
-import jwt_decode from "jwt-decode";
-import { toast } from 'react-toastify';
-import { ApiService } from '../../services/data.service';
-import { persistMyInfo } from '../../services/persistence';
-import googleIcon from '../../assets/img/icons/google.svg';
+import React, { useState } from "react";
+import { signInWithPopup } from "firebase/auth";
+import { toast } from "react-toastify";
+import { ApiService } from "../../services/data.service";
+import { persistMyInfo } from "../../services/persistence";
+import googleIcon from "../../assets/img/icons/google.svg";
+import { auth, googleProvider } from "../../firebaseConfig";
 
 const Google = () => {
+  const handleClick = () => {
+    signInWithPopup(auth, googleProvider).then((data) => {
+      console.log(JSON.stringify(data));
+      ApiService.provider({
+        name: data.user.displayName,
+        provider_name: "google",
+        provider_id: data.user.uid,
+        email: data.user.email,
+      })
+        .then((response) => {
+          if (response.status === false) {
+            toast.error(response.message, {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: false,
+              progress: undefined,
+              theme: "colored",
+            });
+          } else {
+            toast.success(response.message, {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: false,
+              progress: undefined,
+              theme: "colored",
+            });
+            persistMyInfo(response.data);
+            setTimeout(() => {
+              window.location.reload(false);
+            }, 500);
+          }
+        })
+        .catch((err) => {
+          toast(err);
+          console.log(err);
+        });
+    });
+  };
+
   return (
     <div className="hksa-google-login">
-      <GoogleLogin
+      <button onClick={handleClick}>
+        <img src={googleIcon} alt="Google Login" />
+        التسجيل عبر Google
+      </button>
+      {/* <GoogleLogin
         // theme="outline"
         // size="large"
         // text="signin"
@@ -75,9 +124,9 @@ const Google = () => {
         // shape={'pill'}
         // logo_alignment={'left'}
         // width="100%"
-      />
+      /> */}
     </div>
-  )
-}
+  );
+};
 
-export default Google
+export default Google;

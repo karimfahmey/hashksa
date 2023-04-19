@@ -57,16 +57,16 @@ const Footer = () => {
 
           <div className="col-md-4">
             <div className="social-links d-flex flex-wrap justify-content-end">
-              <Link to={contact.social?.facebook.link} className="facebook">
+              <Link target="_blank" to={contact.social?.facebook.link} className="facebook">
                 <img src={Feacbook} alt="Feacbook" />
               </Link>
-              <Link to={contact.social?.instagram.link} className="instagram">
+              <Link target="_blank" to={contact.social?.instagram.link} className="instagram">
                 <img src={Instagram} alt="Instagram" />
               </Link>
-              <Link to={contact.social?.snapchat.link} className="snapchat">
+              <Link target="_blank" to={contact.social?.snapchat.link} className="snapchat">
                 <img src={Snapchat} alt="Snapchat" />
               </Link>
-              <Link to={contact.social?.twitter.link} className="twitter">
+              <Link target="_blank" to={contact.social?.twitter.link} className="twitter">
                 <img src={Twitter} alt="Twitter" />
               </Link>
             </div>

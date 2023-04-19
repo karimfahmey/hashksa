@@ -1,76 +1,71 @@
 import React from "react";
-import TwitterLogin from "react-twitter-login";
+import { signInWithPopup } from "firebase/auth";
 import { toast } from "react-toastify";
 import { ApiService } from "../../services/data.service";
 import { persistMyInfo } from "../../services/persistence";
 
+
+import { auth, twitterProvider } from "../../firebaseConfig";
+
 const Twitter = () => {
-  const responseTwitter = (response) => {
-    console.log(response);
-    // ApiService.provider({
-    //   name: response.name,
-    //   provider_name: "facebook",
-    //   provider_id: response.id,
-    //   email: response.email,
-    // })
-    //   .then((response) => {
-    //     if (response.status === false) {
-    //       toast.error(response.message, {
-    //         position: "top-center",
-    //         autoClose: 3000,
-    //         hideProgressBar: false,
-    //         closeOnClick: true,
-    //         pauseOnHover: true,
-    //         draggable: false,
-    //         progress: undefined,
-    //         theme: "colored",
-    //       });
-    //     } else {
-    //       toast.success(response.message, {
-    //         position: "top-center",
-    //         autoClose: 3000,
-    //         hideProgressBar: false,
-    //         closeOnClick: true,
-    //         pauseOnHover: true,
-    //         draggable: false,
-    //         progress: undefined,
-    //         theme: "colored",
-    //       });
-    //       persistMyInfo(response.data);
-    //       setTimeout(() => {
-    //         window.location.reload(false);
-    //       }, 500);
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     toast(err);
-    //     console.log(err);
-    //   });
+  const handleClick = () => {
+    signInWithPopup(auth, twitterProvider).then((data) => {
+      console.log(data);
+      ApiService.provider({
+        name: data.user.providerData[0].displayName,
+        provider_name: "twitter",
+        provider_id: data.user.providerData[0].uid,
+        email: data.user.providerData[0].email,
+      })
+        .then((response) => {
+          if (response.status === false) {
+            toast.error(response.message, {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: false,
+              progress: undefined,
+              theme: "colored",
+            });
+          } else {
+            toast.success(response.message, {
+              position: "top-center",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: false,
+              progress: undefined,
+              theme: "colored",
+            });
+            persistMyInfo(response.data);
+            setTimeout(() => {
+              window.location.reload(false);
+            }, 500);
+          }
+        })
+        .catch((err) => {
+          toast(err);
+          console.log(err);
+        });
+    });
   };
 
   const TwitterBtn = () => {
     return (
-      <button className="twitter-btn">
-        <i className="fa fa-twitter" aria-hidden="true"></i>
-        التسجيل عبر Twitter
-      </button>
+      <div className="hksa-twitter-login">
+        <button className="twitter-btn" onClick={handleClick}>
+          <i className="icon-tw"></i>
+          التسجيل عبر Twitter
+        </button>
+      </div>
     );
   };
 
   return (
-    <TwitterLogin
-      authCallback={responseTwitter}
-      consumerKey={"SlNiTHoyaVh3dF8tNUo4WFhuYTI6MTpjaQ"}
-      consumerSecret={"AGxNelXHLBdxljkaGEHNw6JAxNA4W7OF16A1G74yR49nzfO6DW"}
-      children={<TwitterBtn />}
-      // appId="3124290001202236"
-      // fields="name,email,picture"
-      // autoLogAppEvents="true"
-      // callback={responseTwitter}
-      // cssClass="my-facebook-button-class"
-      // icon="icon-fb"
-      // textButton="التسجيل عبر Facebook"
-    />
+    <TwitterBtn />
   );
 };
 
