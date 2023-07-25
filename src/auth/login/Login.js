@@ -47,6 +47,7 @@ const Login = ({handleShow, show}) => {
                 persistMyInfo(response.data)
                 setTimeout(()=>{
                     window.location.reload(false);
+                    localStorage.getItem("guest");
                 }, 500);
               })
               .catch( err => {

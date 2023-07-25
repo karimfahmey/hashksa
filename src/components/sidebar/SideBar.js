@@ -32,19 +32,23 @@ const SideBar = () => {
             <News />
           </div>
         </div>
-        <SocialMedia data={contact}/>
+        <SocialMedia data={contact} />
         <div className="download-app">
           <div className="download-title">
             <h4>حمّل التطبيق</h4>
             <p>تطبيق شامل يقدم لك آخر الأحداث في السعودية عبر تغطية مستمرة</p>
           </div>
           <div className="download-content">
-            <Link target="_blank" to={contact.social?.appStore.link}>
-              <img src={contact.social?.appStore.image} alt="Feacbook" />
-            </Link>
-            <Link target="_blank" to={contact.social?.googlePlay.link}>
-              <img src={contact.social?.googlePlay.image} alt="Feacbook" />
-            </Link>
+            {contact.social && (
+              <Link target="_blank" to={contact.social?.appStore.link}>
+                <img src={contact.social?.appStore.image} alt="Feacbook" />
+              </Link>
+            )}
+            {contact.social && (
+              <Link target="_blank" to={contact.social?.googlePlay.link}>
+                <img src={contact.social?.googlePlay.image} alt="Feacbook" />
+              </Link>
+            )}
           </div>
         </div>
       </div>

@@ -21,12 +21,13 @@ const Privacy = () => {
       });
   }, []);
 
+  console.log(privacy, 'privacy');
   return (
     <Fragment>
       <HelmetMetaData
         title="هاشتاق السعودية - سياسة الخصوصية"
         description="ما يحدث في مواقع التواصل الاجتماعيفي منصة واحدة"
-        image={placeholder}
+        image={"https://hashksa.co" + privacy.Privacy?.main_photo}
         quote="يقدم لك آخر الأحداث في السعودية عبر تغطية مستمرة لما يتم تداوله عبر وسائل التواصل الاجتماعي على مدار الساعة"
       />
       <div className="hksa-page-privacy">

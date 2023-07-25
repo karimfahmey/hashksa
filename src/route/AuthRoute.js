@@ -19,6 +19,7 @@ import Terms from "../pages/terms/Terms";
 import PrivacyMobile from "../pages/Privacy/PrivacyMobile";
 import TermsMobile from "../pages/terms/TermsMobile";
 import Notfound from "../pages/search/NotFound";
+import EmbeddedPost from "../pages/singlepost/EmbeddedPost";
 
 const AuthRoute = () => {
 
@@ -29,6 +30,7 @@ const AuthRoute = () => {
       <Route path="events" element={<EventsPage />} />
       <Route path="/events/:id" element={<SingleEvent />} />
       <Route path="/news/:id" element={<SinglePost />} />
+      <Route path="/news/:id/embedded" element={<EmbeddedPost />} />
       <Route path="surveys" element={<Surveys />} />
       <Route path="trend" element={<Trends />} />
       <Route path="events/add-event" element={<AddEvent />} />

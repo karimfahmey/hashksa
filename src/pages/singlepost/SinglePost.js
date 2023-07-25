@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, Fragment } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Tweet } from "react-twitter-widgets";
 import "./SinglePost.scss";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import SideBar from "../../components/sidebar/SideBar";
 
+import { store } from "../../reducers";
 import User from "../../assets/img/user-placeholder.svg";
 import { ApiService } from "../../services/data.service";
 import Moment from "react-moment";
@@ -15,6 +17,9 @@ import ShareAction from "../../actions/ShareAction";
 import Like from "../../actions/Like";
 // import { Helmet } from "react-helmet-async";
 import HelmetMetaData from "../../services/HelmetData";
+import placeholder from "../../assets/img/hashksa-placeholder.jpg";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import Login from "../../auth/login/Login";
 
 const SinglePost = () => {
   const userId = useParams();
@@ -23,9 +28,21 @@ const SinglePost = () => {
   const [comment, setComment] = useState([]);
   const [showReplay, setShowReplay] = useState();
   const [bookMark, setBookMark] = useState(false);
+  const [playVideo, setplayVideo] = useState(false);
+  const videoRef = useRef(null);
+
+  const userDate = store.getState().authStoreState.isAuthenticated;
+  const [showLogin, setShow] = useState(false);
+  const handleShow = () => setShow(!showLogin);
+  
+
+  const handlePlayVideo = () => {
+    setplayVideo(true)
+    videoRef.current.play();
+  }
 
   useEffect(() => {
-    const type_user = localStorage.getItem('type_user');
+    const type_user = localStorage.getItem("type_user");
 
     ApiService.postsShow({ id: userId.id, session: type_user })
       .then((response) => {
@@ -48,6 +65,8 @@ const SinglePost = () => {
       });
   };
 
+
+  console.log(post);
   const formik = useFormik({
     initialValues: {
       comment: "",
@@ -63,9 +82,9 @@ const SinglePost = () => {
     },
   });
 
-  const Desc = post?.des_no_html?.substring(0, 170)
+  const Desc = post?.des_no_html?.substring(0, 170);
 
-  console.log(post);
+  console.log(playVideo);
 
   return (
     <React.Fragment>
@@ -94,7 +113,7 @@ const SinglePost = () => {
                   <i className="fa fa-angle-left"></i>
                   <span
                     className="active"
-                    dangerouslySetInnerHTML={{ __html: post.title }}
+                    dangerouslySetInnerHTML={{ __html: post.title && post.title }}
                   ></span>
                 </li>
               </ul>
@@ -113,16 +132,77 @@ const SinglePost = () => {
           <div className="row">
             <div className="col-md-8 offset-md-1">
               <div className="single-post-data">
-                { post.photo && post.video_url === "" && (
+                {/* {post.photo ? (
                   <img
                     className="post-image"
                     src={post.photo}
                     alt={post.title}
                   />
+                ) : (
+                  <img
+                  className="post-image"
+                  src={placeholder}
+                  alt={post.title}
+                  />
+                )} */}
+                {post.video ? (
+                  <div className={ playVideo ? "hksa-video-block video-play"  : "hksa-video-block" }>
+                    <video ref={videoRef} width="460" height="460" controls>
+                      <source src={post.video} type="video/mp4" />
+                      <source src={post.video} type="video/ogg" />
+                    </video>
+                    <button onClick={handlePlayVideo} className="hksa-play"><i class="icon-play"></i></button>
+                  </div>
+                  ): (
+                  post.video_url ? (
+                    <iframe
+                      className="post-video url"
+                      title={post.title}
+                      src={post.video_url}
+                    />
+                  ) : (
+                    post.photo ? (
+                      <img
+                      className="post-image"
+                      src={post.photo}
+                      alt={post.title}
+                      />
+                    ) : (
+                      <img
+                      className="post-image"
+                      src={placeholder}
+                      alt={post.title}
+                      />
+                    )
+                  )
                 )}
-                {post.video_url && (
-                  <iframe className="post-video"  title={post.title} src={post.video_url} />
+                {/* {post.type === "video" && (
+                  <video width="460" height="460" controls>
+                    <source src={post.video} type="video/mp4" />
+                    <source src={post.video} type="video/ogg" />
+                  </video>
+                )} */}
+                {/* {post.single_photo && post.video_url === "" && (
+                  <img
+                    className="post-image"
+                    src={post.single_photo}
+                    alt={post.title}
+                  />
                 )}
+                {post.video_url ? (
+                  <iframe
+                    className="post-video url"
+                    title={post.title}
+                    src={post.video_url}
+                  />
+                ) : (
+                  post.video && (
+                    <video width="460" height="460" controls>
+                      <source src={post.video} type="video/mp4" />
+                      <source src={post.video} type="video/ogg" />
+                    </video>
+                  )
+                )} */}
                 <div
                   className={
                     bookMark || post.bookmark
@@ -156,9 +236,44 @@ const SinglePost = () => {
                         ))}
                     </ul>
                     <div
-                      className="single-post-description"
+                      className="single-post-description mb-3"
                       dangerouslySetInnerHTML={{ __html: post.des }}
                     ></div>
+                    {post.twitter_embedded && (
+                      <div className="single-post-twitter_embedded">
+                        <Tweet tweetId={post.twitter_embedded} />
+                      </div>
+                    )}
+                    <div
+                      className="single-post-description"
+                      dangerouslySetInnerHTML={{
+                        __html: post.facebook_embedded,
+                      }}
+                    ></div>
+                    {post.gallery && (
+                      <Splide
+                        aria-label={post.title}
+                        options={{
+                          autoplay: true,
+                          rewind: true,
+                          width: 350,
+                          gap: "1rem",
+                          type: "loop",
+                          perPage: 1,
+                          direction: "rtl",
+                        }}
+                      >
+                        {post.gallery.map((item, index) => (
+                          <SplideSlide key={index}>
+                            <img
+                              className="slide-img"
+                              src={item}
+                              alt={post.title}
+                            />
+                          </SplideSlide>
+                        ))}
+                      </Splide>
+                    )}
                   </div>
                 </div>
               </div>
@@ -189,7 +304,10 @@ const SinglePost = () => {
                 </div>
               </div>
               {post.comments && (
-                <div id="comments" className="single-post-data single-comments-data">
+                <div
+                  id="comments"
+                  className="single-post-data single-comments-data"
+                >
                   <div className="single-post-comments">
                     <ul>
                       {post.comments &&
@@ -318,11 +436,22 @@ const SinglePost = () => {
                               value={formik.values.comment}
                             />
                           </div>
-                          <div className="form-action">
-                            <button type="submit">
-                              <i className="icon-send"></i>
-                            </button>
-                          </div>
+                          <Fragment>
+                            {userDate ? (
+                              <div className="form-action">
+                                <button type="submit">
+                                  <i className="icon-send"></i>
+                                </button>
+                              </div>
+                            ) : (
+                              <div className="form-action">
+                                <button type="submit" onClick={handleShow}>
+                                  <i className="icon-send"></i>
+                                </button>
+                              </div>
+                            )}
+                            <Login handleShow={handleShow} show={showLogin} />
+                          </Fragment>
                         </form>
                       </div>
                     </div>

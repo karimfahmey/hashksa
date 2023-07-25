@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { store } from '../reducers';
 
-axios.defaults.baseURL = 'https://dashboard.hashksa.co/api/'
+axios.defaults.baseURL = 'https://dashboard2.hashksa.co/api/'
 axios.interceptors.response.use(res=> res.data, err=> Promise.reject(err.response))
 const lang = localStorage.getItem('lang') || 'ar';
 
@@ -30,6 +30,10 @@ export const ApiService = {
 
     posts(item) {
         return axios.post('postAll', item, {headers: getAuthHeader()})   
+    },
+
+    pinnedPosts() {
+        return axios.get('pinnedPosts')   
     },
     
     postsShow(item) {

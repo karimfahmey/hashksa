@@ -25,12 +25,22 @@ const Header = () => {
   const isAuthenticated = useSelector(
     (state) => state.authStoreState.isAuthenticated
   );
+  const [ipAddress, setIPAddress] = useState('')
+
 
   useEffect(() => {
     if(!isAuthenticated) {
-      window.localStorage.setItem('type_user', 'guest')
+      window.localStorage.setItem('type_user', 'guest');
+      fetch('https://api.ipify.org?format=json')
+      .then(response => response.json())
+      .then(data => setIPAddress(data.ip))
+      .catch(error => console.log(error))
     }
   }, []);
+  
+  setTimeout(() => {
+    window.localStorage.setItem('guest', ipAddress);
+  }, 1000);
   
   const [showLogin, setShow] = useState(false);
   const [showRegister, setShowRegister] = useState(false);

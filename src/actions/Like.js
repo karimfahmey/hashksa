@@ -11,8 +11,10 @@ const Like = ({post, size}) => {
 
   const userDate = store.getState().authStoreState.isAuthenticated;
 
+  const device_id = localStorage.getItem('guest');
+
   const handleLike = async () => {
-    ApiService.postLike({ id: post.id })
+    ApiService.postLike({ id: post.id, device_id: device_id })
       .then((response) => {
         if (response.status === true) {
           setLike(!like);
@@ -50,7 +52,7 @@ const Like = ({post, size}) => {
               ? "hksa-news-meta-item like active"
               : "hksa-news-meta-item like"
           }
-          onClick={handleShow}
+          onClick={handleLike}
         >
           <i className={size === "large" ? "icon-likes large": "icon-likes"}></i>
           {post.like === true && (

@@ -9,24 +9,29 @@ const Bookmark = ({ id, data, type }) => {
   const [showLogin, setShow] = useState(false);
   const handleShow = () => setShow(!showLogin);
 
-  const handleBookmark = () => {
+  const device_ids = localStorage.getItem('guest');
+
+  const handleBookmark = async () => {
     if(type === "events" ) {
-      ApiService.eventBookmark({ id: id })
+      ApiService.eventBookmark({ id: id, device_id: device_ids })
       .then((response) => {
         if (response.status === true) {
             setBookMark(!bookMark);
           }
+          console.log(response);
         })
         .catch((err) => {
           console.log(err);
         });
-    }
-    if(type === "post" ) {
-      ApiService.postBookmark({ id: id })
-      .then((response) => {
+      }
+      if(type === "post" ) {
+        ApiService.postBookmark({ id: id, device_id: device_ids })
+        .then((response) => {
           if (response.status === true) {
             setBookMark(!bookMark);
           }
+          console.log(response);
+          console.log(device_ids);
         })
         .catch((err) => {
           console.log(err);
@@ -54,7 +59,7 @@ const Bookmark = ({ id, data, type }) => {
               ? "hksa-post-bookmark active"
               : "hksa-post-bookmark"
           }
-          onClick={handleShow}
+          onClick={handleBookmark}
         >
           <i className="icon-bookmark"></i>
         </div>

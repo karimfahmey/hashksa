@@ -7,9 +7,9 @@ const News = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    ApiService.posts()
+    ApiService.pinnedPosts()
     .then( response => {
-      setPosts(response.data.data);
+      setPosts(response.data);
     })
     .catch( err => {
         console.log(err)

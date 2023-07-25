@@ -48,10 +48,12 @@ const NewsMasonryitem = ({ post }) => {
           ) : (
             ""
           )}
-          <span className="hksa-news-item--cat">
-            <img src={post.category && post.category.icon} alt="likes" />
-            <span>{post.category && post.category.name}</span>
-          </span>
+          {post.category && (
+            <span className="hksa-news-item--cat">
+              <img src={post.category && post.category.icon} alt="likes" />
+              <span>{post.category && post.category.name}</span>
+            </span>
+          )}
           <Bookmark id={post.id} data={post} type="post" />
         </header>
         <footer className="hksa-news-block-footer">
